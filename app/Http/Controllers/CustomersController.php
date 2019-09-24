@@ -130,7 +130,7 @@ class CustomersController extends Controller
         if(request()->has('image'))
         {
             $customer->update([
-                'image' => request()->image->store('uploads', 'public'),
+                'image' => request()->file('image')->store('storage/uploads', 'public'),
             ]);
 
             $image= Image::make(public_path('storage/'. $customer->image))->fit(300,300);
